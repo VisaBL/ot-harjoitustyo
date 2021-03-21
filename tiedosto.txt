@@ -1,25 +1,11 @@
-moikka olen visa ja tykkän käpistelystä paljonkin t.visa 
-Seuraavaa tehtävää tekiessäsi kannattaa terminaaliin avata uusi välilehti, jotta voit pitää gitk:ta käynnissä.
-
-Kopioi tiedostoon tiedosto.txt jostain paljon tekstiä ja commitoi tiedosto
+opioi tiedostoon tiedosto.txt jostain paljon tekstiä ja commitoi tiedosto
 Poista nyt osa tiedoston tekstistä ja lisää tiedostoon hieman lisää tekstiä
 commitoi muutosten jälkeen
-Päivitä gitk:n näkymä (file/update) ja katso miten muutokset näkyvät (tarkastele kahta ylintä committia)
+Päivitä gitk:n näkymä (file/update) ja katso miten muutokset näkyvät (tarkastel>
 valitse oikeasta alakulmasta patch ja vasemmasta diff
 näin näet commitin aiheuttamat muutokset diff-muodossa
-jos oikealta on valittuna tree, näkyy vasemmalla puolella (valinnasta riippumatta) tiedostojen commitin aikainen tilanne
-Jos käytät sourcetreetä, sen pitäisi päivittyä automaattisesti ja näyttää muutos diff-muodossa
-tiedoston poistaminen ja uudelleennimentä
-Poista tiedosto toinen.txt
-suorita git status
-commitoi muutos
-poista ensin tiedosto gitin alaisuudesta komennolla git rm
-varmista komennolla git status, että kaikki on niinkuin kuuluukin
-muuta tiedoston tiedosto.txt nimeksi eka.txt
-uudelleennimentä tapahtuu komennolla mv
-suorita git status
-miten git käsittelee uudelleennimennän?
-commitoi muutos
+jos oikealta on valittuna tree, näkyy vasemmalla puolella (valinnasta riippumat>
+Jos käytät sourcetreetä, sen pitäisi päivittyä automaattisesti ja näyttää muuto>
 LLITUS aikoo esittää alkuviikosta erillislakia, jolla säädettäisiin liikkumisrajoituksista ja maskipakosta koronavirustartuntojen hillitsemiseksi, kertovat useat lähteet HS:lle.
 
 Erillislain valmistelua kiihdytettiin sen jälkeen, kun hallituspuolueiden puheenjohtajat kokoontuivat perjantaina. Hallituksen esityksen valmistelun osallistuvat ainakin valtioneuvoston kanslian, sosiaali- ja terveysministeriön ja oikeusministeriön virkamiehet.
