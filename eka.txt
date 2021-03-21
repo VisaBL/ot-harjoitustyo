@@ -1,23 +1,12 @@
+ULKONA saisi luonnoksen mukaan harrastaa liikuntaa ja ulkoilla vapaasti, kunhan sen tekee yksin, samassa taloudessa asuvien kanssa tai yhden oman talouden ulkopuolisen kanssa.
+
+Rajoitukset mutta myös vapaus ulkoilla olisivat voimassa ympäri vuorokauden.
+
+Hallituksessa on myös keskusteltu, pitäisikö liikkumisrajoitus asettaa vain iltaan ja yöhön, sillä viranomaisten yksi keskeinen huoli on kotitalouksien juhlissa tapahtuvat, lisääntyvät
+
 opioi tiedostoon tiedosto.txt jostain paljon tekstiä ja commitoi tiedosto
 Poista nyt osa tiedoston tekstistä ja lisää tiedostoon hieman lisää tekstiä
 commitoi muutosten jälkeen
-Päivitä gitk:n näkymä (file/update) ja katso miten muutokset näkyvät (tarkastel>
-valitse oikeasta alakulmasta patch ja vasemmasta diff
-näin näet commitin aiheuttamat muutokset diff-muodossa
-jos oikealta on valittuna tree, näkyy vasemmalla puolella (valinnasta riippumat>
-Jos käytät sourcetreetä, sen pitäisi päivittyä automaattisesti ja näyttää muuto>
-LLITUS aikoo esittää alkuviikosta erillislakia, jolla säädettäisiin liikkumisrajoituksista ja maskipakosta koronavirustartuntojen hillitsemiseksi, kertovat useat lähteet HS:lle.
-
-Erillislain valmistelua kiihdytettiin sen jälkeen, kun hallituspuolueiden puheenjohtajat kokoontuivat perjantaina. Hallituksen esityksen valmistelun osallistuvat ainakin valtioneuvoston kanslian, sosiaali- ja terveysministeriön ja oikeusministeriön virkamiehet.
-
-Erillislaki säädettäisiin perustuslain 23. pykälän (perusoikeudet poikkeusoloissa) nojalla.
-
-PERJANTAINA puheenjohtajien kokouksessa vahvistui HS:n lähteiden mukaan käsitys, ettei voimassa olevilla rajoituksilla tai pienillä lisärajoituksilla saada riittävästi koronavirustartuntoja vähenemään. Lisäksi Terveyden ja hyvinvoinnin (THL) laitos on suosittanut liikkumisen rajoituksia ja maskipakkoa.
-
-Etenkin pääkaupunkiseudulla ja Turussa tartuntojen määrä on kasvanut huolestuttavasti, vaikka voimassa on useita rajoituksia. Esimerkiksi ravintolat ovat olleet suljettuina jo lähes kaksi viikkoa, mutta se on vain hidastanut jonkin verran tartuntojen lisääntymistä.
-
-PÄÄTÖS lain lähettämisestä eduskuntaan edellyttää valtioneuvoston yleisistunnon päätöstä, jota ennen oikeuskanslerin täytyy se tarkastaa.
-
 HS:n tietojen mukaan hallituspuolueet eivät ole vielä täysin yksimielisiä kaikista rajoitusten yksityiskohdista.
 
 Kiistaa on ollut muun muassa nuorten ja lasten asemasta. Muun muassa vasemmistoliitto on vaatinut, että koulut voisivat olla yhä varsin laajasti avoinna. Opetusministeri Jussi Saramo (vas) on sanonut, ettei hallitus enää jatkossa toteuta erillisiä koulusulkuja.
