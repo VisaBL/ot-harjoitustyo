@@ -4,5 +4,4 @@
 
 [komentorivi.txt](https://github.com/VisaBL/otharjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)   
 [gitlog.txt](https://github.com/VisaBL/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
-
-muutettu :) 
+[vaatimuusmäärittely](https://github.com/VisaBL/ot-harjoitustyo/blob/master/laskarit/viikko2/Vaatimusmaarittely.md)
