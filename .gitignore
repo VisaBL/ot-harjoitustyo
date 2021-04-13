@@ -2,3 +2,6 @@
 /laskarit/viikko2/maksukortti/.pytest_cache
 /laskarit/viikko2/unicafe/.coverage
 /laskarit/viikko2/unicafe/htmlcov
+.vscode
+/projekti/.pytest_cache
+/projekti/.coverage

@@ -1,7 +1,12 @@
 # Ohjelmistotekniikan harjoitustyö VisaBL 
-## Tehtavat 
-### Viikko 1 laskarit
 
-[komentorivi.txt](https://github.com/VisaBL/otharjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)   
-[gitlog.txt](https://github.com/VisaBL/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
-[vaatimuusmäärittely](https://github.com/VisaBL/ot-harjoitustyo/blob/master/laskarit/viikko2/Vaatimusmaarittely.md)
+[projektin vaatimuusmäärittely](https://github.com/VisaBL/ot-harjoitustyo/blob/master/laskarit/viikko2/Vaatimusmaarittely.md)
+
+### Projektin suorittaminen 
+projektin voi ajaa omalla tietokoneella ensin asentamalla riippuvuudet poetryn avulla 
+	*$ poetry install*
+Käynnistäminen 
+	*$ "poetry run invoke start"*
+testien suorittaminen
+	*$ poetry run invoke run-tests*
+

@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "snake_game_ot2021"
+version = "0.01a"
+description = "snake-style game made using pygame-library"
+authors = ["Visa Blad <visa.blad@helsinki.fi>"]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+pygame = "^2.0.1"
+
+[tool.poetry.dev-dependencies]
+invoke = "^1.5.0"
+pytest = "^6.2.3"
+coverage = "^5.5"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
