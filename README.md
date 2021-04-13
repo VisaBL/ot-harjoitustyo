@@ -2,7 +2,8 @@
 
 ### Dokumentaatio
 [projektin vaatimuusmäärittely](https://github.com/VisaBL/ot-harjoitustyo/blob/master/laskarit/viikko2/Vaatimusmaarittely.md)
-[työaikakirjanpito]
+
+[työaikakirjanpito](https://github.com/VisaBL/ot-harjoitustyo/blob/master/projekti/tyoaikakirjanpito.md)
 
 ### Projektin suorittaminen 
 
