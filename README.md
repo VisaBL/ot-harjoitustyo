@@ -9,7 +9,7 @@
 
 projektin voi ajaa omalla tietokoneella ensin asentamalla riippuvuudet poetryn avulla 
 
-*$ poetry install*
+	*$ poetry install*
 	
 Käynnistäminen 
 
