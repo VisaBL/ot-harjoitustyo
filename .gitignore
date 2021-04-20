@@ -5,6 +5,7 @@
 .vscode
 /projekti/.pytest_cache
 /projekti/.coverage
+/projektu/htmlcov
 .pytest_cache
 htmlcov
 __pycache__
