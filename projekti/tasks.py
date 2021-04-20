@@ -5,8 +5,12 @@ def start(ctx):
     ctx.run("python3 src/main.py")
 
 @task 
-def run_tests(ctx):
+def test(ctx):
     ctx.run("pytest")
+   
+@task
+def run_event_tests(ctx):
+    ctx.run("pytest src/tests/eventq_test.py")
 
 @task
 def coverage(ctx):
@@ -15,3 +19,11 @@ def coverage(ctx):
 @task(coverage)
 def coverage_report(ctx):
     ctx.run("coverage html")
+
+@task 
+def format(ctx):
+    ctx.run("autopep8 --in-place --recursive src")
+   
+@task
+def lint(ctx):
+    ctx.run("pylint src") 

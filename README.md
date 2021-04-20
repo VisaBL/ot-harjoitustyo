@@ -1,5 +1,9 @@
 # Ohjelmistotekniikan harjoitustyö VisaBL 
 
+### Pelin tarkoitus
+
+Pelissä pelaajan on tarjoitus ohjata matoa, sekä syödä madolla esineitä. Madon pituus ja vauhti kasvavat pelin edetessä
+
 ### Dokumentaatio
 [projektin vaatimuusmäärittely](https://github.com/VisaBL/ot-harjoitustyo/blob/master/laskarit/viikko2/Vaatimusmaarittely.md)
 
@@ -13,13 +17,18 @@ projektin voi ajaa omalla tietokoneella ensin asentamalla riippuvuudet poetryn a
 	
 Käynnistäminen 
 
-	*$ "poetry run invoke start"*
+	*$ poetry run invoke start*
 	
 testien suorittaminen
 
-	*$ poetry run invoke run-tests*
+	*$ poetry run invoke test*
 	
 testikattavuusraportin hakeminen
 
-	*$ poetry run invoke coverage-report
+	*$ poetry run invoke coverage-report*
+	
+pylint koodin analysointi
+
+	*$ poetry run invoke run-pylint* 
+
 

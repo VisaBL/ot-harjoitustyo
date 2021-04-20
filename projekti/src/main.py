@@ -1,58 +1,86 @@
 import pygame
 from snake import Snake
-from coin import Coin
-from draw_window import Draw_window
+from rewards import Coin, Apple, return_asset
+from draw_window import DrawWindow
 from event_queue import Eventqueue
 
+
 class Game():
-    def __init__(self):
-        self.display = Draw_window(600,600)
-        self.clock = pygame.time.Clock()
-        self.eventq = Eventqueue()
-        self.len = 8
-        self.points = 0 
-        self.x = 120
-        self.y = 120
-        self.x_dir = 30
-        self.y_dir = 0 
-        self.snake_group = pygame.sprite.Group()
-        self.coin_group = Coin.return_coin()
+    def __init__(self, resolution):
+        self.display = DrawWindow(resolution)
+        self.len = 6
+        self.points = 0
+        self.cordinates = [340, 260]
+        self.direction_update = (0, 0)
+        self.time_untill_speedup = 350
+        self.edellinen = self.direction_update
+        self.window_size = resolution
 
     def game_loop(self):
-        time = 0 
+        snake_group = pygame.sprite.Group()
+        rewards_group = pygame.sprite.Group(Coin())
+        input_handler = Eventqueue(40)
+        time = 0
+        clock = pygame.time.Clock()
         while True:
-            self.clock.tick(60)
-            self.display.surface.fill((0,0,0))
-            self.eventq.get_event() 
-            time += (self.clock.get_time())
-            if time > 300:
-                self.update()
-                time = 0 
-            self.snake_group.draw(self.display.surface)
-            self.coin_group.draw(self.display.surface)
+            clock.tick(60)
+            if not input_handler.get_event(pygame.event.get()):
+                pygame.quit()
+            self.display.surface.fill((0, 0, 0))
+            time += clock.get_time()
+            if time > self.time_untill_speedup:
+                self.update_pos(input_handler.return_event())
+                self.collisions(snake_group, rewards_group)
+                time = 0
+            snake_group.draw(self.display.surface)
+            rewards_group.draw(self.display.surface)
             pygame.display.flip()
 
-    def update(self):
-        position = self.eventq.return_event()
-        if position != None:
-            self.x_dir = position[0]
-            self.y_dir = position[1]
-        self.x += self.x_dir
-        self.y += self.y_dir
-        new_bite = Snake(30,self.x,self.y, self.len)
-        for snake in self.snake_group:
-            if pygame.sprite.spritecollideany(snake, self.coin_group):
-                for koin in self.coin_group:
-                    koin.kill() 
-                    self.coin_group = Coin.return_coin()
-                self.len += 1 
-                self.points += 1
-            if pygame.sprite.spritecollide(new_bite, self.snake_group, True):
-                print("You Died :( ... Your points are", self.points)
-                pygame.quit()
-            snake.update()
-        self.snake_group.add(new_bite)
+    def update_pos(self, position):
+        if position:
+            self.direction_update = (position[0], position[1])
+        self.cordinates[0] += self.direction_update[0]
+        self.cordinates[1] += self.direction_update[1]
+        self.boarder_chekup()
+
+    def collisions(self, snake_group, rewards_group):
+        new_bite = Snake(40, self.cordinates, self.len, self.direction_update)
+        if pygame.sprite.spritecollide(new_bite, rewards_group, True):
+            if len(rewards_group) < 1:
+                rewards_group.add(return_asset(
+                    snake_group, Coin(), Apple(), 2))
+            self.time_untill_speedup -= 4
+            self.len += 1
+            self.points += 1
+        if pygame.sprite.spritecollide(new_bite, snake_group, True):
+            print("You Died :( ... Your points are", self.points)
+            pygame.quit()
+        rewards_group.update()
+        snake_group.update()
+        snake_group.add(new_bite)
+
+    def does_rotate(self):
+        change = None
+        if self.direction_update != self.edellinen:
+            change = self.edellinen[0] - \
+                self.direction_update[0], self.edellinen[1] - \
+                self.direction_update[1]
+            self.edellinen = (self.cordinates)
+            print(change)
+        return change
+
+    def boarder_chekup(self):
+        if self.cordinates[0] > self.window_size[0]:
+            self.cordinates[0] = 0
+        elif self.cordinates[0] < 0:
+            self.cordinates[0] = self.window_size[0]
+
+        elif self.cordinates[1] > self.window_size[1]:
+            self.cordinates[1] = 0
+        elif self.cordinates[1] < 0:
+            self.cordinates[1] = self.window_size[1]
+
 
 if __name__ == "__main__":
-    testi = Game()
+    testi = Game((800, 600))
     testi.game_loop()

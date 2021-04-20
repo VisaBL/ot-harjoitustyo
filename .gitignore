@@ -8,3 +8,4 @@
 .pytest_cache
 htmlcov
 __pycache__
+projekti/src/__pycache__/
