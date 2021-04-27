@@ -9,6 +9,8 @@ Pelissä pelaajan on tarjoitus ohjata matoa, sekä syödä madolla esineitä. Ma
 
 [työaikakirjanpito](https://github.com/VisaBL/ot-harjoitustyo/blob/master/projekti/tyoaikakirjanpito.md)
 
+[Ensimmäinen relase](https://github.com/VisaBL/ot-harjoitustyo/releases/tag/Viikko5)
+
 ### Projektin suorittaminen 
 
 projektin voi ajaa omalla tietokoneella ensin asentamalla riippuvuudet poetryn avulla 
