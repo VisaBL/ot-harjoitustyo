@@ -36,4 +36,4 @@ event_queue luokkaa, joka lukee käyttäjän syötettä, lisätty testikattavuut
 27.4 n 4h. Refaktoroitu koodia, kirjoitettu testejä. Paranneltu pisteidentallennusta
 
 
-TOTAL HOURS 
+TOTAL HOURS 40H
