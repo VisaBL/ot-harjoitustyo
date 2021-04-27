@@ -15,7 +15,6 @@ class Eventqueue():
     def get_event(self, event_list):
         for event in event_list:
             if event.type == pygame.KEYDOWN:
-                print(event)
                 keypress = None
                 if event.key == pygame.K_LEFT:
                     keypress = "L"
@@ -25,7 +24,7 @@ class Eventqueue():
                     keypress = "U"
                 elif event.key == pygame.K_DOWN:
                     keypress = "D"
-                if keypress is not None and keypress != self._previous_command:
+                if keypress and keypress != self._previous_command:
                     self._events.append(keypress)
                     self._previous_command = keypress
             if event.type == pygame.QUIT or event.type == pygame.K_ESCAPE:
@@ -38,16 +37,19 @@ class Eventqueue():
         if len(self._events) > 0:
             keypress = self._events.popleft()
             if (keypress, self._previously_executed) in not_allowed:
-                pass
+                return None
             elif keypress == "L":
-                command = (-self._size, 0)
+                command = (-self._size, 0, keypress)
             elif keypress == "R":
-                command = (self._size, 0)
+                command = (self._size, 0, keypress)
             elif keypress == "U":
-                command = (0, -self._size)
+                command = (0, -self._size, keypress)
             elif keypress == "D":
-                command = (0, self._size)
+                command = (0, self._size, keypress)
             if command == self._previous_command:
                 return None
             self._previously_executed = keypress
         return command
+
+    def previous_command(self):
+        return self._previously_executed

@@ -1,6 +1,6 @@
 from random import randint
 import pygame
-from image_loader import image_load
+from file_loader import image_load
 
 
 class Coin(pygame.sprite.Sprite):
@@ -41,9 +41,9 @@ def return_asset(snake_group, asset, asset2, asset2_spawn_prob):
             group = pygame.sprite.Group()
             group.add(asset)
             break
-    if probability == asset2_spawn_prob:
+    if probability == asset2_spawn_prob or asset2_spawn_prob != 0:
         while True:
-            if pygame.sprite.spritecollideany(asset2, group, False):
+            if pygame.sprite.spritecollide(asset2, group, False):
                 asset2.rect.center = (randint(0, 400), randint(0, 400))
             if pygame.sprite.spritecollide(asset2, snake_group, False):
                 asset2.rect.center = (randint(0, 400), randint(0, 400))
