@@ -90,6 +90,7 @@ class Game():
         text2 = font.render("your points: "+str(self.points),
                             True, (255, 255, 255), (0, 0, 0))
         data = ScoreUploader().get_highscores(1)
+        print(data)
         text3 = font.render("Highscore: " + str(data[0][0]) + ", User: " + str(
             data[0][1]), True, (255, 255, 255), (0, 0, 0))
         texts = [text1, text2, text3]

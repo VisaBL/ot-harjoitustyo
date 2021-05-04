@@ -42,11 +42,11 @@ class ScoreUploader:
 
     def get_highscores(self, count: int):
         path = return_path("scores")
-        if path is None:
-            return "N/A", "N/A"
         with open(path, "r") as data:
             reader = csv.reader(data)
             data = sorted(reader, key=lambda row: int(row[0]), reverse=True)
+        if path is None or len(data) == 0 :
+            data = [["Nan", "Nan", "Nan"]]
         return data[0:count]
 
     def get_highscores_from_drive(self, count: int):
