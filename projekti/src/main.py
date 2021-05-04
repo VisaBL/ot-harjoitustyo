@@ -4,21 +4,21 @@ from rewards import Coin, Apple, return_asset
 from draw_window import DrawWindow
 from event_queue import Eventqueue
 from leaderboard_uploader import ScoreUploader
-
+from menu import Menu
 
 class Game():
     def __init__(self, resolution, bloc_size):
         self.display = DrawWindow(resolution)
         self.cordinates = [340, 340]
         self.direction_update = (0, 0)
-        self.time_untill_speedup = 350
+        self.time_untill_speedup = 300
         self.window_size = resolution
         self.block_size = bloc_size
         self.points = 0
 
     def game_loop(self):
         snake_group = pygame.sprite.Group()
-        rewards_group = pygame.sprite.Group(Coin())
+        rewards_group = pygame.sprite.Group()
         input_handler = Eventqueue(self.block_size)
         time = 0
         clock = pygame.time.Clock()
@@ -40,8 +40,7 @@ class Game():
                 if command is not None:
                     prev_command = command
                 time = 0
-                pygame.display.update()
-                self.display.surface.fill((0, 0, 0))
+                self.display.refresh()
 
     def update_pos(self, position):
         if position:
@@ -55,18 +54,19 @@ class Game():
 
     def collisions(self, snake_group, rewards_group, input_commands):
         runing = True
-        new_bite = Snake(40, self.cordinates, self.points +
+        new_bite = Snake(self.block_size, self.cordinates, self.points +
                          6, self.direction_update)
         if pygame.sprite.spritecollide(new_bite, rewards_group, True):
             if len(rewards_group) < 1:
                 rewards_group.add(return_asset(
-                    snake_group, Coin(), Apple(), 2))
+                    snake_group, Coin(), Apple(), self.block_size, self.window_size))
             self.time_untill_speedup -= 4
             self.points += 1
         if pygame.sprite.spritecollide(new_bite, snake_group, True):
             runing = False
         if len(rewards_group) == 0:
-            rewards_group.add(return_asset(snake_group, Coin(), Apple(), 0))
+            rewards_group.add(return_asset(
+                snake_group, Coin(), None, self.block_size, self.window_size))
         rewards_group.update()
         snake_group.update(input_commands)
         snake_group.add(new_bite)
@@ -89,28 +89,25 @@ class Game():
         text1 = font.render('You Died :(', True, (255, 255, 255), (0, 0, 0))
         text2 = font.render("your points: "+str(self.points),
                             True, (255, 255, 255), (0, 0, 0))
-        data = ScoreUploader().get_highscores()
-        text3 = font.render(
-            "Highscore: " + str(data[0]) + ", User: " + str(data[1]), True, (255, 255, 255), (0, 0, 0))
+        data = ScoreUploader().get_highscores(1)
+        text3 = font.render("Highscore: " + str(data[0][0]) + ", User: " + str(
+            data[0][1]), True, (255, 255, 255), (0, 0, 0))
         texts = [text1, text2, text3]
         while True:
             offset = -50
             for text in texts:
-                textRect = text.get_rect()
-                textRect.center = (
+                text_rect = text.get_rect()
+                text_rect.center = (
                     self.window_size[0] // 2, (self.window_size[1] // 2) + offset)
-                self.display.surface.blit(text, textRect)
+                self.display.surface.blit(text, text_rect)
                 offset += 50
             pygame.display.update()
             if eventq.get_event(pygame.event.get()) == False:
                 break
-        ScoreUploader().upload_score(self.points, "TESTI-VISA")
+        ScoreUploader().upload_score(self.points, "Visa1", True)
         self.display.quit()
-
-    def initializer(self):
-        pass
 
 
 if __name__ == "__main__":
-    testi = Game((800, 600), 40)
-    testi.game_loop()
+    claass = Menu((800,600), Game((800,600),40))
+    claass.main_menu()

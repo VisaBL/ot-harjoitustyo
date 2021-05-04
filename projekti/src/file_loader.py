@@ -1,6 +1,6 @@
 import os
-import pygame
 import csv
+import pygame
 
 dirname = os.path.dirname(__file__)
 
@@ -17,9 +17,10 @@ def image_load(asset):
 
 def csv_load(table, data):
     mode = "a"
-    path = os.path.join(dirname, "pref", table+".csv")
-    if not os.path.exists("pref"):
+    if os.path.exists("pref"):
         os.makedirs("pref")
+        mode = "w"
+    path = os.path.join(dirname, "pref", table+".csv")
     if not os.path.isfile(path):
         print(os.path.isfile(path))
         mode = "w"
@@ -33,8 +34,8 @@ def return_path(file):
     path = os.path.join(dirname, "pref", file+".csv")
     if not os.path.isfile(path):
         return None
-    else:
-        return path
+    return path
+
 # testejä varetn toimito, jolla voi poistaa
 
 
@@ -49,5 +50,4 @@ def remove_pref(files: list):
 
 
 if __name__ == "__main__":
-    csv_load("scores", ["69", "l-User", "Today"])
-    remove_pref(["scores"])
+    csv_load("scores", ["79", "l-User", "Today"])

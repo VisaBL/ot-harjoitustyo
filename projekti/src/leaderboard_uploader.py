@@ -1,9 +1,7 @@
 from datetime import datetime
-from os import read
-import gspread
-from gspread.utils import rowcol_to_a1
-from file_loader import csv_load, return_path
 import csv
+import gspread
+from file_loader import csv_load, return_path
 
 # private keyn tallentaminen ideaalisesti erittäin huono idea. Kuitenkin tällä tilillä on hyvin rajatut oikeudet siihen, mitä se voi tehdä
 credintentials = {
@@ -26,31 +24,49 @@ class ScoreUploader:
         self._sheet = self._account.open_by_key(
             "1R_l6bVt1Nv4qHsrjebW5CB9oWCTRUVKSWbtS2Apcp2A")
 
-    def hello_world(self):
-        return self._sheet.sheet1.get('A1')
-
-    def upload_score(self, score, username):
+    def upload_score(self, score, username, local: bool):
         data = [score, username,
                 str(datetime.now().strftime("%m/%d/%Y, %H:%M"))]
-        csv_load("scores", data)
+        if local:
+            csv_load("scores", data)
+            print("saved scores locally")
         try:
-            self._sheet.sheet1.append_row(data)
+            self._sheet.sheet1.insert_row(data)
             print("Uploaded score:", data)
             return True
-        except:
-            print("Error has occoured :(( ")
+        except:  # Very bad error handling here :(
+            print("Random Error has occoured :(( ")
             return False
 
-    def get_highscores(self):
+# Funktio, joka palauttaa paikalliset huippupisteet
+
+    def get_highscores(self, count: int):
         path = return_path("scores")
         if path is None:
             return "N/A", "N/A"
         with open(path, "r") as data:
             reader = csv.reader(data)
-            data = max(reader, key=lambda row: int(row[0]))
-        return data[0], data[1]
+            data = sorted(reader, key=lambda row: int(row[0]), reverse=True)
+        return data[0:count]
+
+    def get_highscores_from_drive(self, count: int):
+        data = sorted(self._sheet.sheet1.get_all_values(),
+                      key=lambda row: int(row[0]), reverse=True)
+        return data[0:count]
+
+
+# funktio lähinnä testejä varten, jotta testin luoma tulos ei jää tulostaulukkon
+
+
+    def delete_first_colum(self):
+        sheet = self._sheet.sheet1
+        try:
+            sheet.delete_dimension("ROWS", 1, 1)
+            return True
+        except:
+            return False
 
 
 if __name__ == "__main__":
     luokka = ScoreUploader()
-    print(luokka.get_highscores())
+    print(luokka.get_highscores(5))

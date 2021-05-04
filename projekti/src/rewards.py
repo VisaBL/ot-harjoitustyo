@@ -8,7 +8,7 @@ class Coin(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = image_load("coin")
         self.rect = self.image.get_rect()
-        self.rect.center = (randint(50, 200), randint(50, 200))
+        self.rect.center = 10, 10
 
 
 class Apple(pygame.sprite.Sprite):
@@ -16,7 +16,7 @@ class Apple(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = image_load("apple")
         self.rect = self.image.get_rect()
-        self.rect.center = (randint(50, 200), randint(50, 200))
+        self.rect.center = 10, 10
         self._life = (randint(9, 17))
         self._life_in_start = self._life
 
@@ -29,29 +29,37 @@ class Apple(pygame.sprite.Sprite):
         return self._life, self._life_in_start
 
 # Palauttaa Sprite-ryhmän: rewards ja tarkistaa törmäykset madon sekä muiden palkintojen kanssa
-# Funktio kaipaa jatkokehitystä
 
 
-def return_asset(snake_group, asset, asset2, asset2_spawn_prob):
-    probability = randint(0, asset2_spawn_prob)
+def return_asset(snake_group, asset, asset2, block_size, resolution):
+    group = pygame.sprite.Group()
+    group.add(asset)
+    if randomaattor(2) and asset2 is not None:
+        group.add(asset2)
     while True:
-        if pygame.sprite.spritecollide(asset, snake_group, False):
-            asset.rect.center = (randint(0, 400), randint(0, 400))
+        if pygame.sprite.groupcollide(group, snake_group, False, False) or asset.rect.center == (10, 10):
+            for asset in group:
+                asset_placer(asset, resolution, block_size)
         else:
-            group = pygame.sprite.Group()
-            group.add(asset)
             break
-    if probability == asset2_spawn_prob or asset2_spawn_prob != 0:
-        while True:
-            if pygame.sprite.spritecollide(asset2, group, False):
-                asset2.rect.center = (randint(0, 400), randint(0, 400))
-            if pygame.sprite.spritecollide(asset2, snake_group, False):
-                asset2.rect.center = (randint(0, 400), randint(0, 400))
-            else:
-                group.add(asset2)
-                break
     return group
 
 
+def asset_placer(asset, resolution, block_size):
+    margin = block_size/2
+    x_axis = resolution[0] // block_size
+    y_axis = resolution[1] // block_size
+    asset.rect.center = (randint(1, x_axis-1)*block_size+margin,
+                         randint(1, y_axis-1)*block_size+margin)
+
+
+def randomaattor(probability):
+    value = randint(1, probability)
+    if value == 1:
+        return True
+    return False
+
+
 if __name__ == "__main__":
-    pass
+    for _ in range(10):
+        print(randomaattor(10))

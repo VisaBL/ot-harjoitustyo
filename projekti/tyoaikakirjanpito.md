@@ -35,5 +35,10 @@ event_queue luokkaa, joka lukee käyttäjän syötettä, lisätty testikattavuut
 
 27.4 n 4h. Refaktoroitu koodia, kirjoitettu testejä. Paranneltu pisteidentallennusta
 
+### viikko 6
 
-TOTAL HOURS 40H
+29.4 n 2h. Paranneltu koodia, suunniteltu käyttöliittymää
+1.5 n. 2h
+2.5 n. 3h Paranneltu Rewards-luokan toimintaa, siistitty koodia, korjattu testejä. Korjattu Bugeja 
+3.5 n 5h Toteutettu pääävalikko, sekä huippupisteiden haku-valikko. Toteutettu testejä. 
+TOTAL HOURS 52H

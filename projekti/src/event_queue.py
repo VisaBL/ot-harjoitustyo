@@ -10,10 +10,12 @@ class Eventqueue():
         self._previous_command = None
         self._previously_executed = None
 
-# pygame get_event välitetään funktiolle koska automaattiset testit
+# inject event funktion testejä varten.
 
     def get_event(self, event_list):
         for event in event_list:
+            # if inject_event:
+            #    keypress = inject_event
             if event.type == pygame.KEYDOWN:
                 keypress = None
                 if event.key == pygame.K_LEFT:
@@ -37,7 +39,7 @@ class Eventqueue():
         if len(self._events) > 0:
             keypress = self._events.popleft()
             if (keypress, self._previously_executed) in not_allowed:
-                return None
+                command = None
             elif keypress == "L":
                 command = (-self._size, 0, keypress)
             elif keypress == "R":
@@ -47,9 +49,15 @@ class Eventqueue():
             elif keypress == "D":
                 command = (0, self._size, keypress)
             if command == self._previous_command:
-                return None
+                command = None
             self._previously_executed = keypress
         return command
 
+# Fuktioita testejä varten
+
     def previous_command(self):
         return self._previously_executed
+
+    def reset_queue(self):
+        self._previous_command = None
+        self._previously_executed = None

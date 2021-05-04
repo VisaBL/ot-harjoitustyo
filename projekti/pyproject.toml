@@ -8,6 +8,7 @@ authors = ["Visa Blad <visa.blad@helsinki.fi>"]
 python = "^3.6"
 pygame = "^2.0.0"
 gspread = "^3.7.0"
+pygame-gui = "^0.5.7"
 
 [tool.poetry.dev-dependencies]
 invoke = "^1.5.0"

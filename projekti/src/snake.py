@@ -8,7 +8,7 @@ class Snake(pygame.sprite.Sprite):
         self._dir = direciton
         self._life = life
         self._updates = 0
-        self.size = size
+        self._size = size
         self.image = self._image_setter(im("head"))
         self.rect = self.image.get_rect()
         self.rect.center = cordinates
@@ -20,25 +20,22 @@ class Snake(pygame.sprite.Sprite):
         self._life -= 1
         if self._life < 1:
             self.kill()
-        if command is not None:
-            self.prev_command = command
         return self._life
 
     def _image_setter(self, texture):
-        if self._dir[0] == -self.size:
+        if self._dir[0] == -self._size:
             deg = 90
-        elif self._dir[0] == self.size:
+        elif self._dir[0] == self._size:
             deg = 270
-        elif self._dir[1] == -self.size:
+        elif self._dir[1] == -self._size:
             deg = 0
-        elif self._dir[1] == self.size:
+        elif self._dir[1] == self._size:
             deg = 180
         else:
             deg = 0
         return pygame.transform.rotate(texture, deg)
 
     def _set_second_block(self, commands):
-        print(commands)
         command_list = {("U", "L"): 90, ("L", "D"): 180,
                         ("D", "R"): 270, ("R", "U"): 0}
         command_list_flip = {("U", "R"): 90, ("R", "D"): 0,
