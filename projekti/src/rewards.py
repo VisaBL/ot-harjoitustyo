@@ -34,18 +34,18 @@ class Apple(pygame.sprite.Sprite):
 def return_asset(snake_group, asset, asset2, block_size, resolution):
     group = pygame.sprite.Group()
     group.add(asset)
-    if randomaattor(2) and asset2 is not None:
+    if _randomaattor(2) and asset2 is not None:
         group.add(asset2)
     while True:
         if pygame.sprite.groupcollide(group, snake_group, False, False) or asset.rect.center == (10, 10):
             for asset in group:
-                asset_placer(asset, resolution, block_size)
+                _asset_placer(asset, resolution, block_size)
         else:
             break
     return group
 
 
-def asset_placer(asset, resolution, block_size):
+def _asset_placer(asset, resolution, block_size):
     margin = block_size/2
     x_axis = resolution[0] // block_size
     y_axis = resolution[1] // block_size
@@ -53,13 +53,8 @@ def asset_placer(asset, resolution, block_size):
                          randint(1, y_axis-1)*block_size+margin)
 
 
-def randomaattor(probability):
+def _randomaattor(probability):
     value = randint(1, probability)
     if value == 1:
         return True
     return False
-
-
-if __name__ == "__main__":
-    for _ in range(10):
-        print(randomaattor(10))

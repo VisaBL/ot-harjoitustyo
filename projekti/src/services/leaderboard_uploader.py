@@ -24,7 +24,18 @@ class ScoreUploader:
         self._sheet = self._account.open_by_key(
             "1R_l6bVt1Nv4qHsrjebW5CB9oWCTRUVKSWbtS2Apcp2A")
 
-    def upload_score(self, score, username, local: bool):
+    def upload_score(self, score: int, username: str, local: bool):
+        """[will save given highscore and username into google drive and 
+            to local file]
+
+        Args:
+            score (int): [The score to be uploaded to]
+            username (str): [The name of the player]
+            local (bool): [True if the score will be saved locally as well, mainly for the tests]
+
+        Returns:
+            [Bool]: [True if successfull, False if fails ]
+        """
         data = [score, username,
                 str(datetime.now().strftime("%m/%d/%Y, %H:%M"))]
         if local:
@@ -34,7 +45,7 @@ class ScoreUploader:
             self._sheet.sheet1.insert_row(data)
             print("Uploaded score:", data)
             return True
-        except:  # Very bad error handling here :(
+        except:  # Couldn't get suitable expection work here :( )
             print("Random Error has occoured :(( ")
             return False
 
@@ -42,16 +53,21 @@ class ScoreUploader:
 
     def get_highscores(self, count: int):
         path = return_path("scores")
-        with open(path, "r") as data:
-            reader = csv.reader(data)
-            data = sorted(reader, key=lambda row: int(row[0]), reverse=True)
-        if path is None or len(data) == 0 :
-            data = [["Nan", "Nan", "Nan"]]
+        data = [["N/A", "N/A", "N/A"]]
+        if path is not None:
+            with open(path, "r") as data:
+                reader = csv.reader(data)
+                data = sorted(reader, key=lambda row: int(
+                    row[0]), reverse=True)
         return data[0:count]
 
     def get_highscores_from_drive(self, count: int):
-        data = sorted(self._sheet.sheet1.get_all_values(),
-                      key=lambda row: int(row[0]), reverse=True)
+        try:
+            data = sorted(self._sheet.sheet1.get_all_values(),
+                          key=lambda row: int(row[0]), reverse=True)
+        except:
+            data = [["NO ", "NETWORK", "01/01/1970, 00:00"]]
+            print(data)
         return data[0:count]
 
 

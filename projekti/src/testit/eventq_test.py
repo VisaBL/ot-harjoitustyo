@@ -17,7 +17,7 @@ class Test(unittest.TestCase):
         self.assertEqual(True, state)
 
     def test_event_queue_returns_true_when_no_events(self):
-        state = self.eventqueue.get_event(())
+        state = self.eventqueue.get_event([])
         self.assertEqual(True, state)
 
     def test_event_queue_returns_false_when_event_type_quit(self):
@@ -76,3 +76,26 @@ class Test(unittest.TestCase):
             [pygame.event.Event(pygame.KEYDOWN, key=pygame.K_DOWN)])
         event = self.eventqueue.return_event()
         self.assertEqual('D', event[2])
+
+    def test_event_queue_pops_return_not_the_ongoin_event(self):
+        event = pygame.event.Event(pygame.KEYDOWN, key=pygame.K_DOWN)
+        event_list = [event, event, event]
+        self.eventqueue.return_event()
+        self.eventqueue.reset_queue()
+        for i in range(2):
+            self.eventqueue.get_event(event_list)
+        for i in range(2):
+            event = self.eventqueue.return_event()
+        self.assertEqual(None, event)
+
+    def test_event_queue_pops_return_not_allowed_event(self):
+        event1 = pygame.event.Event(pygame.KEYDOWN, key=pygame.K_UP)
+        event2 = pygame.event.Event(pygame.KEYDOWN, key=pygame.K_DOWN)
+        event_list = [event1, event2]
+        self.eventqueue.return_event()
+        self.eventqueue.reset_queue()
+        for i in range(2):
+            self.eventqueue.get_event(event_list)
+        for i in range(2):
+            event = self.eventqueue.return_event()
+        self.assertEqual(None, event)
