@@ -1,8 +1,10 @@
 ## Arkkitehtuuridokumentaatio 
 
 ### Rakenne
+![alt text](https://github.com/VisaBL/ot-harjoitustyo/blob/master/projekti/documentation/Pictures/rakenne.png?raw=true)
 Ohjelma (peli) Koostuu seuvaanlaisista osista
 * UI - Sisältää valikon, sekä Draw_windows luokat
+	*Valikko toteutettu pygamw_gui kirjastolla 
 * Pelin Komponentit
 	* Snake-luokka
 	* Rewards-luokka
@@ -15,8 +17,7 @@ Ohjelma (peli) Koostuu seuvaanlaisista osista
 		* Hakee sekä tulostaa huippupisteet paikallisesta tiedostosta  
 		
 
-### Sekvenssikaavio pelin alustaminen
-
-### Sekvenssikaavio Huippupisteiden hakeminen
+### Sekvenssikaavio pelin toiminta
+![alt text](https://github.com/VisaBL/ot-harjoitustyo/blob/master/projekti/documentation/Pictures/sekvenssikaavio.png?raw=true)
 
 
