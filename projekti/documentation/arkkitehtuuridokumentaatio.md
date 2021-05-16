@@ -21,3 +21,6 @@ Ohjelma (peli) Koostuu seuvaanlaisista osista
 ![alt text](https://github.com/VisaBL/ot-harjoitustyo/blob/master/projekti/documentation/Pictures/sekvenssikaavio.png?raw=true)
 
 
+### Tiedon pysyväistallennus 
+* Ohjelma tallentaa tulokset paikallisesti csv tiedostoon file_loader luokan toimesta, 
+* Tulokset tallenetaan sekä haetaaan myös google-drive taulukosta. Tästä vastaa leaderboard_uploader-luokka 
