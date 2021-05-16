@@ -3,6 +3,11 @@ import pygame
 
 class DrawWindow():
     def __init__(self, resolution):
+        """[Will initialize pugame and create display surface]
+
+        Args:
+            resolution (tuple): [Screen resolution]
+        """
         pygame.init()
         self._surface = pygame.display.set_mode(resolution)
         pygame.display.set_caption('Snake Game')

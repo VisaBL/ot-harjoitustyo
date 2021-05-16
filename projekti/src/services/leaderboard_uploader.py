@@ -73,7 +73,6 @@ class ScoreUploader:
 
 # funktio lähinnä testejä varten, jotta testin luoma tulos ei jää tulostaulukkon
 
-
     def delete_first_colum(self):
         sheet = self._sheet.sheet1
         try:
@@ -81,8 +80,3 @@ class ScoreUploader:
             return True
         except:
             return False
-
-
-if __name__ == "__main__":
-    luokka = ScoreUploader()
-    print(luokka.get_highscores(5))

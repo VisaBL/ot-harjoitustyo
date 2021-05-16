@@ -5,11 +5,11 @@ import pygame
 
 class Eventqueue():
     def __init__(self, block_size):
-        self._events = deque(choice(["L", "R", "D", "U"]))
+        self._events = None
         self._size = block_size
         self._previous_command = None
         self._previously_executed = None
-
+        self.init_queue()
 # event list välitetään funktiolle testejä varten. Jos
 
     def get_event(self, event_list):
@@ -77,9 +77,6 @@ class Eventqueue():
         self._previously_executed = None
 
 # Fuktioita testejä varten
-
-    def previous_command(self):
-        return self._previously_executed
 
     def reset_queue(self):
         self._previous_command = None

@@ -8,7 +8,7 @@ class Coin(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = image_load("coin")
         self.rect = self.image.get_rect()
-        self.rect.center = 10, 10
+        self.rect.center = (10, 10)
 
 
 class Apple(pygame.sprite.Sprite):
@@ -32,14 +32,32 @@ class Apple(pygame.sprite.Sprite):
 
 
 def return_asset(snake_group, asset, asset2, block_size, resolution):
+    """Will check collisions with the snake and return the sprites,
+        also monitos that the spawned sprites wont collide 
+    Args:
+        snake_group (Pygame.sprite.Group): [The group for snake blocks to check collisions ]
+        asset (Sprite): [The main reward for the snake]
+        asset2 (Additional_sprite): [Additional bonus reward, won't be dispatched if none ]
+        block_size (int): [size of the single block]
+        resolution (tuple): [Size of the window]
+    Returns:
+        pygame.sprite.Group: Returns the group containing sprites 
+    """
     group = pygame.sprite.Group()
     group.add(asset)
     if _randomaattor(2) and asset2 is not None:
         group.add(asset2)
     while True:
         if pygame.sprite.groupcollide(group, snake_group, False, False) or asset.rect.center == (10, 10):
-            for asset in group:
-                _asset_placer(asset, resolution, block_size)
+            lista = []
+            for item in group:
+                _asset_placer(item, resolution, block_size)
+                while True:
+                    if item.rect.center in lista:
+                        _asset_placer(item, resolution, block_size)
+                    if item.rect.center not in lista:
+                        break
+                lista.append(asset.rect.center)
         else:
             break
     return group

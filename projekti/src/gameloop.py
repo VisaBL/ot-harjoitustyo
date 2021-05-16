@@ -16,11 +16,11 @@ class Game():
         self.direction_update = (0, 0)
         self.window_size = window_size
         self.block_size = block_size
-        self.menu = menu
+        self._menu = menu
         self.time_untill_speedup = None
         self._points = None
 
-    def game_loop(self, display, input_handler):
+    def game_loop(self, display, input_handler, clock, rewards_group):
         """[The main event loop for the game]
 
         Args:
@@ -30,16 +30,16 @@ class Game():
         self._set_game_parameters()
         input_handler.init_queue()
         snake_group = pygame.sprite.Group()
-        rewards_group = pygame.sprite.Group()
+        if not rewards_group:
+            rewards_group = pygame.sprite.Group()
         time = 0
-        clock = pygame.time.Clock()
         prev_command = None
         running = True
         while True:
-            print(running)
             clock.tick(30)
-            if input_handler.get_event(None) == False:
+            if not input_handler.get_event(None):
                 running = False
+            if not running:
                 break
             time += clock.get_time()
             if time > self.time_untill_speedup:
@@ -51,9 +51,8 @@ class Game():
                 if command is not None:
                     prev_command = command
                 time = 0
-            if not running:
-                self.menu.snake_dead_handler(self._points)
-                break
+        self._menu.snake_dead_handler(self._points)
+        return True
 
     def update_pos(self, position):
         if position:
@@ -103,7 +102,3 @@ class Game():
         self.time_untill_speedup = 300
         self._points = 0
         self.direction_update = (40, 0)
-
-
-if __name__ == "__main__":
-    clas = Game((600, 600), 40, None)

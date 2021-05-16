@@ -30,19 +30,16 @@ def csv_load(table: str, data: list):
         table (str): [file name to create or to append data to ]
         data (list): [the data to be saved into the file ]
     """
-    mode = "a"
+    mode = "a+"
     if not os.path.exists("pref"):
         os.makedirs("pref")
     path = os.path.join(dirname, "pref", table+".csv")
     if not os.path.isfile(path):
-        mode = "w"
-    try:
-        with open(path, mode) as table:
-            writer = csv.writer(table)
-            if data:
-                writer.writerow(data)
-    except OSError:
-        print("Error")
+        mode = "w+"
+    with open(path, mode) as file:
+        writer = csv.writer(file)
+        if data:
+            writer.writerow(data)
 
 # funktio tarpeellinen huippupisteiden lataamista varten
 
@@ -71,6 +68,5 @@ def remove_pref(files: list):
 
 
 if __name__ == "__main__":
-    # remove_pref(["scores"])
-    #csv_load("scores", ["44", "Visa", "5.5.20201"])
-    print(image_load("coin"))
+    csv_load("scores", ["44", "Visa", "5.5.20201"])
+    # print(image_load("coin"))

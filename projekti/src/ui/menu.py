@@ -24,10 +24,6 @@ class Menu():
                                                      text='LOAD HIGHSCORES',
                                                      manager=gui)
 
-        settigns_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((center, 320), (150, 50)),
-                                                       text='OPTIONS',
-                                                       manager=gui)
-
         exit_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((center, 390), (150, 50)),
                                                    text='QUIT',
                                                    manager=gui)
@@ -44,7 +40,8 @@ class Menu():
                     if event.user_type == pygame_gui.UI_BUTTON_PRESSED:
                         if event.ui_element == hello_button:
                             print('Here we go!')
-                            game.game_loop(self.display, self.eventqueue)
+                            game.game_loop(
+                                self.display, self.eventqueue, self.clock, None)
 
                         elif event.ui_element == exit_button:
                             print('Adios!!')
@@ -53,8 +50,6 @@ class Menu():
                             self.display.text_to_screen(
                                 "Loading Data", (self.resolution[0]//2, 120), 30)
                             self.highscore_display()
-                        elif event.ui_element == settigns_button:
-                            self.settings(center)
                 gui.process_events(event)
                 self.display.draw_gui(gui, time_delta)
 
@@ -76,14 +71,14 @@ class Menu():
 
         for alkio in local_data:
             info = f'{alkio[0]}; {alkio[1]}; {alkio[2][0:10]}'
-            textbox = pygame_gui.elements.ui_label.UILabel(relative_rect=pygame.Rect((40, h_margin), (200, 50)),
+            textbox = pygame_gui.elements.ui_label.UILabel(relative_rect=pygame.Rect((30, h_margin), (230, 60)),
                                                            text=info,
                                                            manager=gui)
             h_margin += 70
         h_margin = 130
         for alkio in cloud_data:
             info = f'{alkio[0]}; {alkio[1]}; {alkio[2][0:10]}'
-            textbox = pygame_gui.elements.ui_label.UILabel(relative_rect=pygame.Rect((570, h_margin), (200, 50)),
+            textbox = pygame_gui.elements.ui_label.UILabel(relative_rect=pygame.Rect((550, h_margin), (230, 60)),
                                                            text=info,
                                                            manager=gui)
             h_margin += 70
@@ -101,9 +96,9 @@ class Menu():
             if not running:
                 break
             self.display.draw_gui(gui, time_delta)
-            self.display.text_to_screen("local Highscores", (150, 80), 40)
+            self.display.text_to_screen("Local Highscores", (150, 80), 40)
             self.display.text_to_screen(
-                "Online Leaderboards", (self.resolution[0]-150, 80), 40)
+                "Online Leaderboards", (self.resolution[0]-170, 80), 40)
         self.display.refresh()
 
     def snake_dead_handler(self, points):
@@ -147,6 +142,10 @@ class Menu():
             self.display.text_to_screen(
                 end_text, (self.resolution[0]//2, 50), 50)
         input = name_box_entry.get_text()
+        if len(input) < 1:
+            input = "No Name"
+        if len(input) > 10:
+            input = input[:10]
         self.display.text_to_screen(
             "Saving scores :)", (self.resolution[0]//2, self.resolution[1]-30), 40)
         ScoreUploader().upload_score(points, input, True)

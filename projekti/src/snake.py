@@ -43,6 +43,7 @@ class Snake(pygame.sprite.Sprite):
         if commands in command_list:
             self.image = pygame.transform.rotate(
                 im("turn"), command_list[commands])
+            turn = commands
         elif commands in command_list_flip:
             image = pygame.transform.flip(im("turn"), False, True)
             self.image = pygame.transform.rotate(

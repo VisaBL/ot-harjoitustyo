@@ -30,12 +30,17 @@ class Tests(unittest.TestCase):
         is_alive = pygame.sprite.Sprite.alive(snake)
         self.assertEqual(False, is_alive)
 
-    def test_snake_turn_setter_works_if_turn(self):
+    def test_snake_turn_setter_works_if_turn_clocwise(self):
         snake = Snake(40, (30, 30), 10, (-40, 0))
-        result = snake.update(("U", "R"))
-        self.assertEqual(("U", "R"), result[1])
+        result = snake.update(("R", "D"))
+        self.assertEqual(("R", "D"), result[1])
+
+    def test_snake_turn_setter_works_if_turn_anticlocwise(self):
+        snake = Snake(40, (30, 30), 10, (-40, 0))
+        result = snake.update(("U", "L"))
+        self.assertEqual(("U", "L"), result[1])
 
     def test_snake_turn_setter_returns_none_if_not_turn(self):
-        snake = Snake(40, (30, 30), 10, (-40, 0))
+        snake = Snake(40, (30, 30), 10, (0, -40))
         result = snake.update(("L", None))
         self.assertEqual(None, result[1])

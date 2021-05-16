@@ -15,3 +15,8 @@ Ohjelma (peli) Koostuu seuvaanlaisista osista
 		* Hakee sekä tulostaa huippupisteet paikallisesta tiedostosta  
 		
 
+### Sekvenssikaavio pelin alustaminen
+
+### Sekvenssikaavio Huippupisteiden hakeminen
+
+

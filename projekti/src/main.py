@@ -1,7 +1,7 @@
 from event_queue import Eventqueue
-from ui.menu import Menu
 from gameloop import Game
 from ui.draw_window import DrawWindow
+from ui.menu import Menu
 
 
 class Main():
