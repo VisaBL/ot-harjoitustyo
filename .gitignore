@@ -3,6 +3,7 @@
 /laskarit/viikko2/unicafe/.coverage
 /laskarit/viikko2/unicafe/htmlcov
 .vscode
+.pytest_cache
 /projekti/.pytest_cache
 /projekti/.coverage
 /projekti/htmlcov

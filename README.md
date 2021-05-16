@@ -5,11 +5,17 @@
 Pelissä pelaajan on tarjoitus ohjata matoa, sekä syödä madolla esineitä. Madon pituus ja vauhti kasvavat pelin edetessä
 
 ### Dokumentaatio
-[projektin vaatimuusmäärittely](https://github.com/VisaBL/ot-harjoitustyo/blob/master/laskarit/viikko2/Vaatimusmaarittely.md)
+[ohjelman vaatimuusmäärittely](https://github.com/VisaBL/ot-harjoitustyo/blob/master/projekti/documentation/Vaatimusmaarittely.md)
 
-[työaikakirjanpito](https://github.com/VisaBL/ot-harjoitustyo/blob/master/projekti/tyoaikakirjanpito.md)
+[arkkitehtuurikuvaus](https://github.com/VisaBL/ot-harjoitustyo/blob/master/projekti/documentation/Arkkitehtuuridokumentaatio.md)
+
+[testausdokumentti](https://github.com/VisaBL/ot-harjoitustyo/blob/master/projekti/documentation/Testausdokumentti.md)
+
+[työaikakirjanpito](https://github.com/VisaBL/ot-harjoitustyo/blob/master/projekti/documentation/tyoaikakirjanpito.md)
 
 [Ensimmäinen relase](https://github.com/VisaBL/ot-harjoitustyo/releases/tag/Viikko5)
+
+[Final relase(loppupalautus)](https://github.com/VisaBL/ot-harjoitustyo/releases/tag/Loppupalautus)
 
 ### Projektin suorittaminen 
 
@@ -29,8 +35,14 @@ testikattavuusraportin hakeminen
 
 	*$ poetry run invoke coverage-report*
 	
+testikattavuuden saa tulostettua myös suoraan terminaaliin komennolla 
+
+	*$ poetry run invoke coverege-terminal*
+	
 pylint koodin analysointi
 
-	*$ poetry run invoke run-pylint* 
+	*$ poetry run invoke lint* 
+	
+### Käyttöohje 
 
 
