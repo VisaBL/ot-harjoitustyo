@@ -7,6 +7,8 @@ Pelissä pelaajan on tarjoitus ohjata matoa, sekä syödä madolla esineitä. Ma
 ### Dokumentaatio
 [ohjelman vaatimuusmäärittely](https://github.com/VisaBL/ot-harjoitustyo/blob/master/projekti/documentation/Vaatimusmaarittely.md)
 
+[käyttöohje](https://github.com/VisaBL/ot-harjoitustyo/blob/master/projekti/documentation/k%C3%A4ytt%C3%B6ohde.md)
+
 [arkkitehtuurikuvaus](https://github.com/VisaBL/ot-harjoitustyo/blob/master/projekti/documentation/arkkitehtuuridokumentaatio.md)
 
 [testausdokumentti](https://github.com/VisaBL/ot-harjoitustyo/blob/master/projekti/documentation/Testausdokumentti.md)
@@ -16,6 +18,8 @@ Pelissä pelaajan on tarjoitus ohjata matoa, sekä syödä madolla esineitä. Ma
 [Ensimmäinen relase](https://github.com/VisaBL/ot-harjoitustyo/releases/tag/Viikko5)
 
 [Final relase(loppupalautus)](https://github.com/VisaBL/ot-harjoitustyo/releases/tag/Loppupalautus)
+
+
 
 ### Projektin suorittaminen 
 
