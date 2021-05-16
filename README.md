@@ -17,7 +17,7 @@ Pelissä pelaajan on tarjoitus ohjata matoa, sekä syödä madolla esineitä. Ma
 
 [Ensimmäinen relase](https://github.com/VisaBL/ot-harjoitustyo/releases/tag/Viikko5)
 
-[Final relase(loppupalautus)](https://github.com/VisaBL/ot-harjoitustyo/releases/tag/Loppupalautus)
+[Final relase(loppupalautus)](https://github.com/VisaBL/ot-harjoitustyo/releases/tag/Final)
 
 
 
